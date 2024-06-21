@@ -20,7 +20,7 @@ function App() {
             <h1>Data from MySQL Selamx</h1>
             <ul>
                 {data.map(item => (
-                    <li key={item.id}>{item.name}</li>
+                    <li key={item.id}>{item.ad}</li>
                 ))}
             </ul>
         </div>
