@@ -6,6 +6,7 @@ function App() {
 
     useEffect(() => {
         axios.get('http://sercanbaris.com:3001/data')
+
             .then(response => {
                 setData(response.data);
             })
@@ -16,7 +17,7 @@ function App() {
 
     return (
         <div>
-            <h1>Data from MySQL</h1>
+            <h1>Data from MySQL Selam</h1>
             <ul>
                 {data.map(item => (
                     <li key={item.id}>{item.name}</li>
