@@ -1,30 +1,40 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React, { useState } from 'react';
 
 function App() {
-    const [data, setData] = useState([]);
+  const [todos, setTodos] = useState([]);
+  const [inputValue, setInputValue] = useState('');
 
-    useEffect(() => {
-        axios.get('https://sercanbaris.com:3001/data')
+  const handleInputChange = (e) => {
+    setInputValue(e.target.value);
+  };
 
-            .then(response => {
-                setData(response.data);
-            })
-            .catch(error => {
-                console.error('There was an error fetching the data!', error);
-            });
-    }, []);
+  const handleAddTodo = () => {
+    if (inputValue.trim() !== '') {
+      setTodos([...todos, inputValue]);
+      setInputValue('');
+    }
+  };
 
-    return (
-        <div>
-            <h1>Data from MySQL Selamx</h1>
-            <ul>
-                {data.map(item => (
-                    <li key={item.id}>{item.ad}</li>
-                ))}
-            </ul>
-        </div>
-    );
+  const handleDeleteTodo = (index) => {
+    const updatedTodos = todos.filter((_, i) => i !== index);
+    setTodos(updatedTodos);
+  };
+
+  return (
+    <div>
+      <h1>Todo App</h1>
+      <input type="text" value={inputValue} onChange={handleInputChange} />
+      <button onClick={handleAddTodo}>Add Todo</button>
+      <ul>
+        {todos.map((todo, index) => (
+          <li key={index}>
+            {todo}
+            <button onClick={() => handleDeleteTodo(index)}>Delete</button>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 }
 
 export default App;
