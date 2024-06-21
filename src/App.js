@@ -5,7 +5,7 @@ function App() {
     const [data, setData] = useState([]);
 
     useEffect(() => {
-        axios.get('http://sercanbaris.com:3001/data')
+        axios.get('https://sercanbaris.com:3001/data')
 
             .then(response => {
                 setData(response.data);
