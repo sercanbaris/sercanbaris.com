@@ -17,7 +17,7 @@ function App() {
 
     return (
         <div>
-            <h1>Data from MySQL Selam</h1>
+            <h1>Data from MySQL Selamx</h1>
             <ul>
                 {data.map(item => (
                     <li key={item.id}>{item.name}</li>
